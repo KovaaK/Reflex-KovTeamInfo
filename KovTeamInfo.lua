@@ -114,7 +114,7 @@ local function drawPlayer(player,x,y,alignH,alignV)
     local scoreFontSize = drawHealth and math.floor(fontSize*1.5) or math.floor(fontSize*1.25)
     local scoreWidth = 2*math.floor(0.7*scoreFontSize)
     local halfHeight = math.floor(height/2)
-    local cameraIntensity = math.min(1,DP2_Scoreboard.cameraIntensity*2)
+    local cameraIntensity = 0
     local arrowWidth = 2*margin+cameraIntensity*margin
     --local fullWidth = width + margin + scoreWidth + arrowWidth + margin*2
     local fullWidth = width + scoreWidth + (not gameOver and arrowWidth + margin*2 or 0)
@@ -211,7 +211,6 @@ local function drawPlayer(player,x,y,alignH,alignV)
         nvgSvg("internal/ui/icons/CTFflag", x1, y + 12, 8)
         x1 = x1 + 24;
     end
-	
 	
     if (player.carnageTimer > 0) then -- player has carnage
         nvgFillColor(Color(255,120,128))
