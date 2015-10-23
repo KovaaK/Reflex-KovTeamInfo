@@ -206,6 +206,13 @@ local function drawPlayer(player,x,y,alignH,alignV)
         x1 = x1 + 24;
     end
 
+    if player.hasFlag then
+        nvgFillColor(Color(60,80,255));
+        nvgSvg("internal/ui/icons/CTFflag", x1, y + 12, 8)
+        x1 = x1 + 24;
+    end
+	
+	
     if (player.carnageTimer > 0) then -- player has carnage
         nvgFillColor(Color(255,120,128))
         nvgSvg("internal/ui/icons/carnage", x1, y + 12, 8)
@@ -229,7 +236,7 @@ function KovTeamInfo:draw()
 
     if showInTeamModes then
         local gameMode = gamemodes[world.gameModeIndex].shortName;
-        if gameMode ~= 'tdm' and gameMode ~= 'atdm' then return end;
+        if gameMode ~= 'tdm' and gameMode ~= 'atdm' and gameMode ~= "ctf" then return end;
     end
     
     -- Early out if we are not in (A)TDM
